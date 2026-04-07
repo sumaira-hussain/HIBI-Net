@@ -1,13 +1,13 @@
-# BiSK-Net: Boundary-Integrated Spatial-Kernel Network for High-Precision Polyp Segmentation
+# HIBI-Net: A Lightweight Hybrid Framework with Multi-Scale Context Aggregation and Boundary Regularization for Polyp Segmentation.
 
-This repository contains the official PyTorch implementation of **BiSK-Net**, a hybrid Transformer–CNN architecture designed for high-precision polyp segmentation.  
-BiSK-Net integrates **multi-scale kernel interactions**, **enhanced spatial-domain fusion**, and **explicit boundary supervision** to achieve accurate and anatomically coherent segmentation across diverse colonoscopy datasets.
+This repository contains the official PyTorch implementation of **HIBI-Net**, a hybrid Transformer–CNN architecture designed for high-precision polyp segmentation.  
+HIBI-Net integrates **multi-scale kernel interactions**, **enhanced spatial-domain fusion**, and **explicit boundary supervision** to achieve accurate and anatomically coherent segmentation across diverse colonoscopy datasets.
 
 ---
 
 ##  Overview
 
-BiSK-Net addresses three long-standing challenges in automated polyp segmentation:
+HIBI-Net addresses three long-standing challenges in automated polyp segmentation:
 
 - **Large variation in polyp scale and morphology**
 - **Weak or ambiguous boundaries**
