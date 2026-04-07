@@ -1,6 +1,6 @@
-# bisknet.py
+# HIBInet.py
 """
-BISKNet: Unified Boundary-aware Integrated Spline Kernel Network
+HIBI-Net: A Lightweight Hybrid Framework with Multi-Scale Context Aggregation and Boundary Regularization for Polyp Segmentation
 A complete, self-contained model file combining:
 - PVTv2 backbone
 - SDI (Scale-Discriminative Integration) modules
@@ -651,13 +651,13 @@ class DecoderWithKAN(nn.Module):
 
 
 # ============================================================================
-# PART 5: Main BISKNet Model
+# PART 5: Main HIBINet Model
 # ============================================================================
 
-class BISKNet(nn.Module):
+class HIBINet(nn.Module):
     """
-    BISKNet: Boundary-aware Integrated Spline Kernel Network
-
+    HIBI-Net: A Lightweight Hybrid Framework with Multi-Scale Context Aggregation and Boundary Regularization for Polyp Segmentation
+    
     Args:
         num_classes (int): Number of output classes
         use_sdi (bool): Enable SDI modules for feature fusion
@@ -758,7 +758,7 @@ def add_kan_args(parser):
 if __name__ == "__main__":
     # Test all configurations
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(f"Testing BISKNet on {device}")
+    print(f"Testing HIBINet on {device}")
 
     B, C, H, W = 2, 3, 352, 352
     x = torch.randn(B, C, H, W, device=device)
@@ -767,32 +767,32 @@ if __name__ == "__main__":
 
     # Test 1: Baseline (no SDI, no KAN, no boundary)
     print("\n1. Baseline Configuration:")
-    model = BISKNet(use_sdi=False, use_kan=False, use_boundary=False).to(device)
+    model = HIBINet(use_sdi=False, use_kan=False, use_boundary=False).to(device)
     out = model(x)
     print(f"   Output shape: {out.shape}")
 
     # Test 2: SDI only
     print("\n2. SDI Only Configuration:")
-    model = BISKNet(use_sdi=True, use_kan=False, use_boundary=False).to(device)
+    model = HIBINet(use_sdi=True, use_kan=False, use_boundary=False).to(device)
     out = model(x)
     print(f"   Output shape: {out.shape}")
 
     # Test 3: KAN only
     print("\n3. KAN Only Configuration:")
-    model = BISKNet(use_sdi=False, use_kan=True, use_boundary=False).to(device)
+    model = HIBINet(use_sdi=False, use_kan=True, use_boundary=False).to(device)
     out = model(x)
     print(f"   Output shape: {out.shape}")
 
     # Test 4: Boundary only
     print("\n4. Boundary Only Configuration:")
-    model = BISKNet(use_sdi=False, use_kan=False, use_boundary=True).to(device)
+    model = HIBINet(use_sdi=False, use_kan=False, use_boundary=True).to(device)
     seg, bnd = model(x)
     print(f"   Segmentation shape: {seg.shape}")
     print(f"   Boundary shape: {bnd.shape}")
 
     # Test 5: Full model (SDI + KAN + Boundary)
-    print("\n5. Full BISKNet Configuration:")
-    model = BISKNet(use_sdi=True, use_kan=True, use_boundary=True).to(device)
+    print("\n5. Full model Configuration:")
+    model = HIBINet(use_sdi=True, use_kan=True, use_boundary=True).to(device)
     seg, bnd = model(x)
     print(f"   Segmentation shape: {seg.shape}")
     print(f"   Boundary shape: {bnd.shape}")
